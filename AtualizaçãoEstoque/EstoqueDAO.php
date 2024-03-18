@@ -17,31 +17,23 @@ Class EstoqueDAO {
 
             foreach ($produtos as $produto) {
                 $sql = "SELECT COUNT(0) AS count FROM estoque 
-                        WHERE produto = :produto
-                        AND cor = :cor
-                        AND tamanho = :tamanho
-                        AND deposito = :deposito
-                        AND data_disponibilidade = :data_disponibilidade";
+                        WHERE produto = :produto";
 
                 $stmt_select = $pdo->prepare($sql);
                 $stmt_select->execute([
-                    ':produto' => $produto['produto'],
-                    ':cor' => $produto['cor'],
-                    ':tamanho' => $produto['tamanho'],
-                    ':deposito' => $produto['deposito'],
-                    ':data_disponibilidade' => $produto['data_disponibilidade']
+                    ':produto' => $produto['produto']
                 ]);
 
                 $count = $stmt_select->fetchColumn();
 
                 if ($count > 0) {
                     $sql = "UPDATE estoque
-                            SET quantidade = :quantidade
-                            WHERE produto = :produto
-                            AND cor = :cor
-                            AND tamanho = :tamanho
-                            AND deposito = :deposito
-                            AND data_disponibilidade = :data_disponibilidade";
+                            SET quantidade = :quantidade,
+                                tamanho = :tamanho,
+                                cor = :cor,
+                                deposito = :deposito,
+                                data_disponibilidade = :data_disponibilidade
+                            WHERE produto = :produto";
 
                     $stmt_update = $pdo->prepare($sql);
                     $stmt_update->execute([
