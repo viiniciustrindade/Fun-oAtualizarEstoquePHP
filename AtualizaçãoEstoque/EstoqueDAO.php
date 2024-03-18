@@ -2,7 +2,7 @@
 require_once 'conect.php'; 
 Class EstoqueDAO {
 
-    function atualizarEstoqueFromJson(string $jsonString): bool
+    function AtualizarEstoqueFromJson(string $jsonString): bool
     {
         $produtos = json_decode($jsonString, true);
 
