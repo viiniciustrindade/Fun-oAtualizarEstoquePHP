@@ -3,7 +3,7 @@ class Conexao {
     
     private static $pdo;
 
-    public static function connect() {
+    public static function Connect() {
         try {
             self::$pdo = new PDO('mysql:host=localhost;dbname=estoque', 'user', 'senha');
             self::$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
