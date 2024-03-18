@@ -11,7 +11,7 @@ Class EstoqueDAO {
         }
 
         try {
-            $pdo = Conexao::connect(); 
+            $pdo = Conexao::Connect(); 
 
             $pdo->beginTransaction();
 
